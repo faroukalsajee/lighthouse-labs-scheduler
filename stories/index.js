@@ -6,8 +6,8 @@ import { action } from "@storybook/addon-actions";
 import "index.scss";
 
 import Button from "components/Button";
-import DayList from "components/DayList";
 import DayListItem from "components/DayListItem";
+import DayList from "components/DayList";
 import InterviewerList from "components/InterviewerList";
 import InterviewerListItem from "components/InterviewerListItem";
 import Appointment from "components/Appointment/index";
@@ -18,6 +18,7 @@ import Confirm from "components/Appointment/Confirm";
 import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
 import Form from "components/Appointment/Form";
+
 
 storiesOf("Button", module)
   .addParameters({
@@ -34,6 +35,7 @@ storiesOf("Button", module)
       Disabled
     </Button>
   ));
+
 
 
   storiesOf("DayListItem", module) //Initiates Storybook and registers our DayListItem component
@@ -143,13 +145,65 @@ storiesOf("Button", module)
         })
         .add("Appointment", () => <Appointment />)
         .add("Appointment with Time", () => <Appointment time="12pm" />);
-
-
+      
+      
         storiesOf("Header", module)
         .addParameters({
           backgrounds: [{ name: "white", value: "#fff", default: true }]
         })
         .add("Header", () => <Header />)
-        .add("Header with Time", () => <Header time="12pm" />);        
+        .add("Header with Time", () => <Header time="12pm" />);
+
+
+        storiesOf("Empty", module)
+        .addParameters({
+          backgrounds: [{ name: "white", value: "#fff", default: true }]
+        })
+        .add("Empty", () => <Empty />)
+        .add("Empty with onAdd", () => <Empty onAdd={action("Empty clicked")} />);   
         
-      
+
+        storiesOf("Show", module)
+        .addParameters({
+          backgrounds: [{ name: "white", value: "#fff", default: true }]
+        })
+        .add("Show with student, interviewer", () => 
+          <Show 
+            student={"Lydia Miller-Jones"} 
+            interviewer={{ id: 1, name: "Sylvia Palmer", avatar: "https://i.imgur.com/LpaY82x.png" }}
+            onEdit={action("Edit clicked")} 
+            onDelete={action("Delete clicked")}
+          />);
+          
+          
+          storiesOf("Confirm", module)
+          .addParameters({
+            backgrounds: [{ name: "white", value: "#fff", default: true }]
+          })
+          .add("Confirm", () => <Confirm />)
+          .add("Confirm with message and buttons", () => <Confirm message={"Delete the appointment?"} onConfirm={action("Confirm clicked")}  onCancel={action("Cancel clicked")}/>);
+        
+        
+        
+          storiesOf("Status", module)
+          .addParameters({
+            backgrounds: [{ name: "white", value: "#fff", default: true }]
+          })
+          .add("Status", () => <Status />)
+          .add("Status with message", () => <Status message={"Deleting"} />);
+          
+          
+          storiesOf("Error", module)
+          .addParameters({
+            backgrounds: [{ name: "white", value: "#fff", default: true }]
+          })
+          .add("Error", () => <Error />)
+          .add("Error with message and close", () => <Error message={"Could not delete appointment"} onClose={action("Error closed")} />);
+        
+        
+          storiesOf("Form", module)
+          .addParameters({
+            backgrounds: [{ name: "white", value: "#fff", default: true }]
+          })
+          .add("Form", () => <Form name={"Sylvia Palmer"} interviewers={interviewers} interviewer={1} onSave={action("Save clicked")} onCancel={action("Cancel clicked")} />);
+        
