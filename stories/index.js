@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from 'react'
 
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
@@ -38,15 +38,15 @@ storiesOf("Button", module)
 
 
 
-  storiesOf("DayListItem", module) //Initiates Storybook and registers our DayListItem component
+  storiesOf("DayListItem", module) 
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
-  }) // Provides the default background color for our component
-  .add("Unselected", () => <DayListItem name="Monday" spots={5} />) // To define our stories, we call add() once for each of our test states to generate a story
+  }) 
+  .add("Unselected", () => <DayListItem name="Monday" spots={5} />)
   .add("Selected", () => <DayListItem name="Monday" spots={5} selected />) 
   .add("Full", () => <DayListItem name="Monday" spots={0} />)
   .add("Clickable", () => (
-    <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} /> // action() allows us to create a callback that appears in the actions panel when clicked
+    <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} />
   ));
 
   const days = [
@@ -206,4 +206,21 @@ storiesOf("Button", module)
             backgrounds: [{ name: "white", value: "#fff", default: true }]
           })
           .add("Form", () => <Form name={"Sylvia Palmer"} interviewers={interviewers} interviewer={1} onSave={action("Save clicked")} onCancel={action("Cancel clicked")} />);
-        
+
+          storiesOf("Appointment", module)
+          .add("Appointment Empty", () => (
+            <Fragment>
+              <Appointment id={1} time="12pm" />
+              <Appointment id="last" time="1pm" />
+            </Fragment>
+          ))
+          .add("Appointment Booked", () => (
+            <Fragment>
+              <Appointment
+                id={1}
+                time="12pm"
+                interview={{ student: "Lydia Miller-Jones", interviewer }}
+              />
+              <Appointment id="last" time="1pm" />
+            </Fragment>
+          ))
