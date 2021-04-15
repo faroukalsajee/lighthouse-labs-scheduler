@@ -34,16 +34,7 @@ export default function useApplicationData(props) {
 
   function bookInterview(id, interview) {
     return axios.put(`/api/appointments/${id}`, { interview }).then(r =>
-      // Promise.all([
-      //   axios.get("/api/appointments"),
-      //   axios.get("/api/days")
-      // ]).then(all => {
-      //   dispatch({
-      //     type: SET_INTERVIEW_DAYS,
-      //     appointments: all[0].data,
-      //     days: all[1].data
-      //   });
-      // })
+     
       dispatch({
         type: SET_INTERVIEW,
         id,
@@ -54,16 +45,7 @@ export default function useApplicationData(props) {
 
   function cancelInterview(id) {
     return axios.delete(`/api/appointments/${id}`).then(r =>
-      // Promise.all([
-      //   axios.get("/api/appointments"),
-      //   axios.get("/api/days")
-      // ]).then(all => {
-      //   dispatch({
-      //     type: SET_INTERVIEW_DAYS,
-      //     appointments: all[0].data,
-      //     days: all[1].data
-      //   });
-      // })
+     
       dispatch({
         type: SET_INTERVIEW,
         id,

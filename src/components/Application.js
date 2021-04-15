@@ -1,42 +1,41 @@
-/* eslint-disable no-lone-blocks */
+// eslint-disable-next-line
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+
 import "components/Application.scss";
-import DayList from "components/DayList";
-
+import DayList from "./DayList";
+// eslint-disable-next-line
+import InterviewerList from "./InterviewerList";
 import Appointment from "components/Appointment";
-import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
-
+// eslint-disable-next-line
+import { matchAppointments, getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 import useApplicationData from "hooks/useApplicationData";
 
 export default function Application(props) {
+
   const {
     state,
     setDay,
     bookInterview,
     cancelInterview
   } = useApplicationData();
-{
-  getAppointmentsForDay(state, state.day).map(appointment => {
-    const interview = getInterview(state, appointment.interview);
-    const interviewers = getInterviewersForDay(state, state.day);
-    return (
-      <Appointment
-        key={appointment.id}
-        interview={interview}
-        id={appointment.id}
-        time={appointment.time}
-        interviewers={interviewers}
-        bookInterview={bookInterview}
-        cancelInterview={cancelInterview}
-      />
-    );
-  }
-  )}
 
-  useEffect(() => {
-    axios.get("/api/days").then(response => setDay(response.data));
-  }, [setDay]);
+  const appointmentObjects = getAppointmentsForDay(state, state.day);
+  const interviewers = getInterviewersForDay(state, state.day);
+
+  const appointment = appointmentObjects.map((appointmentObject) => {
+    const interview = getInterview(state, appointmentObject.interview)
+
+    return (
+        <Appointment 
+          {...appointmentObject}
+          key={appointmentObject.id}
+          interview={interview}
+          interviewers={interviewers}
+          bookInterview={bookInterview}
+          cancelInterview={cancelInterview}
+        />
+      )
+  });
 
   return (
     <main className="layout">
@@ -46,11 +45,16 @@ export default function Application(props) {
           src="images/logo.png"
           alt="Interview Scheduler"
         />
-
         <hr className="sidebar__separator sidebar--centered" />
-        <DayList days={state.days} day={state.day} setDay={setDay} />
-        <nav className="sidebar__menu" />
-
+        <nav className="sidebar__menu">
+        <DayList
+          days={state.days}
+          day={state.day}
+          setDay={setDay}
+          bookInterview={bookInterview}
+          cancelInterview={cancelInterview}
+        />
+        </nav>
         <img
           className="sidebar__lhl sidebar--centered"
           src="images/lhl.png"
@@ -58,11 +62,10 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-        
-        
-        <Appointment key="last" id="last" time="5pm" />
+        {appointment}
+        <Appointment key="last" time="5pm" bookInterview={bookInterview} cancelInterview={cancelInterview} 
+        />
       </section>
-      ​
     </main>
   );
 }
