@@ -1,32 +1,39 @@
-import  { useState } from 'react';
+import { useState } from 'react';
+// take in an initial mode
+// set the mode state with the initial mode provided
+// return an object with a mode property
 
+const useVisualMode = (initial) => {
+  const [mode, setMode] = useState(initial);
+  // eslint-disable-next-line
+  const [history, setHistory] = useState([initial]);
 
-export default function useVisualMode(intial) {
-    const [mode, setMode] = useState(intial);
-    const [history, setHistory] = useState({ modes: [mode], index: 0 });
+  // allows to transition to a new mode
+  const transition = (newMode, replace = false) => {
+    if (replace) {
+      setMode((prev) => newMode)
+      let replaceHistory = [...history];
+      replaceHistory[replaceHistory.length - 1] = mode;
+      setHistory((prev) => replaceHistory);
+    } else {
+      setMode((prev) => newMode);
+      let newHistory = [...history];
+      newHistory.push(newMode);
+      setHistory((prev) => newHistory);
+    }
+  };
 
-    const transition = (newMode, replace) => {
-        const newHistory = { ...history, modes:[...history.modes] };
-        if (replace) {
-            newHistory.modes.pop();
-        }
-        
-        newHistory.modes.push(newMode);
-        newHistory.index = newHistory.modes.length - 1;
-        setMode(newMode)
-        setHistory(prev => ({ ...prev, modes: newHistory.modes, index: newHistory.index }));
-    };
+  // allows to call back to return to previous mode
+  const back = () => {
+     let newHistory = [...history];
+    newHistory.pop(mode);
+    setHistory((prev) => newHistory);
+    if (history.length > 1) {
+      setMode((prev) => newHistory[(newHistory.length - 1)]);
+    }
+  };
 
-    const back = () => {
-        const newHistory = { ...history, modes:[...history.modes] };
+  return { mode, transition, back }
+}
 
-        if (newHistory.index > 0) {
-            newHistory.modes.pop();
-            newHistory.index = newHistory.modes.length - 1;
-            setMode(newHistory.modes[newHistory.index]);
-            setHistory(prev => ({ ...prev, modes: newHistory.modes, index: newHistory.index }));
-        }
-    };
-
-    return { mode, transition, back };
-};
+export default useVisualMode;

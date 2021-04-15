@@ -95,6 +95,7 @@ export default function Appointment(props) {
         }
         { mode === EDIT &&
             <Form
+
                 interviewer={(props.interview) ? props.interview.interviewer.id : null}
                 interviewers={props.interviewers}
                 name={props.interview && props.interview.student}

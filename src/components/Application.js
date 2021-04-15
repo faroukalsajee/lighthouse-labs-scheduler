@@ -1,15 +1,13 @@
+/* eslint-disable no-lone-blocks */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "components/Application.scss";
-import DayList from "./DayList";
-import Appointment from "./Appointment/index.js";
-import {
-  getAppointmentsForDay,
-  getInterview,
-  getInterviewersByDay
-} from "helpers/selectors";
-import useApplicationData from "../hooks/useApplicationData";
+import DayList from "components/DayList";
 
+import Appointment from "components/Appointment";
+import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
+
+import useApplicationData from "hooks/useApplicationData";
 
 export default function Application(props) {
   const {
@@ -18,11 +16,27 @@ export default function Application(props) {
     bookInterview,
     cancelInterview
   } = useApplicationData();
-
+{
+  getAppointmentsForDay(state, state.day).map(appointment => {
+    const interview = getInterview(state, appointment.interview);
+    const interviewers = getInterviewersForDay(state, state.day);
+    return (
+      <Appointment
+        key={appointment.id}
+        interview={interview}
+        id={appointment.id}
+        time={appointment.time}
+        interviewers={interviewers}
+        bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
+      />
+    );
+  }
+  )}
 
   useEffect(() => {
-
-  }, [/* */]);
+    axios.get("/api/days").then(response => setDay(response.data));
+  }, [setDay]);
 
   return (
     <main className="layout">
@@ -44,21 +58,8 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-        {getAppointmentsForDay(state, state.day).map(appointment => {
-          const interview = getInterview(state, appointment.interview);
-          const interviewers = getInterviewersByDay(state, state.day);
-          return (
-            <Appointment
-              key={appointment.id}
-              interview={interview}
-              id={appointment.id}
-              time={appointment.time}
-              interviewers={interviewers}
-              bookInterview={bookInterview}
-              cancelInterview={cancelInterview}
-            />
-          );
-        })}
+        
+        
         <Appointment key="last" id="last" time="5pm" />
       </section>
       ​
