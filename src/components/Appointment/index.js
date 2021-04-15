@@ -8,7 +8,6 @@ import Confirm from "./Confirm";
 import Error from "./Error";
 import Status from "./Status";
 
-
 import useVisualMode from "../../hooks/useVisualMode";
 
 export default function Appointment(props) {
