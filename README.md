@@ -4,7 +4,7 @@
 
 
 ## Project Display
-https://user-images.githubusercontent.com/42353964/114977518-a184e680-9e3c-11eb-8c17-72f9f75ad9f1.mov
+
 ## Setup
 
 Install dependencies with `npm install`.
