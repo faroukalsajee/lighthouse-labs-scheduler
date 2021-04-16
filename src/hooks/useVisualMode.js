@@ -1,14 +1,11 @@
 import { useState } from 'react';
 // take in an initial mode
-// set the mode state with the initial mode provided
-// return an object with a mode property
+// set mode state with initial mode provided
+// return an object with mode property
 
 const useVisualMode = (initial) => {
   const [mode, setMode] = useState(initial);
-  // eslint-disable-next-line
   const [history, setHistory] = useState([initial]);
-
-  // allows to transition to a new mode
   const transition = (newMode, replace = false) => {
     if (replace) {
       setMode((prev) => newMode)
@@ -23,7 +20,7 @@ const useVisualMode = (initial) => {
     }
   };
 
-  // allows to call back to return to previous mode
+  // call back to return to previous mode
   const back = () => {
      let newHistory = [...history];
     newHistory.pop(mode);

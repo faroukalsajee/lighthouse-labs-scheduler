@@ -1,15 +1,14 @@
-//Go through an appointments object and return an array pf all the nested objects with that id
+// Check appointment objects then return an array of nested objects with same id
 const matchIds = (appointments, ids) => {
     const matched = ids.map(id => appointments[id]);
     return matched;
   }
   
-  //Go through a state array with a days object and an appointments object
-  //Match the appointments given in the days object to those in the appointments object
+  // Go through state array with days and appointments object then
+  // Match appointments given in the days object to those in the appointments object
   function getAppointmentsForDay(state, day) {
   
     let appointmentArr = [];
-    // eslint-disable-next-line
     state.days.map(dayObject => {
       if (dayObject.name === day) {
         dayObject.appointments.forEach(apptId => appointmentArr.push(apptId))
@@ -33,7 +32,6 @@ const matchIds = (appointments, ids) => {
   function getInterviewersForDay(state, day) {
   
     let interviewersArr = [];
-    // eslint-disable-next-line
     state.days.map(dayObject => {
       if (dayObject.name === day) {
         dayObject.interviewers.forEach(interviewerId => interviewersArr.push(interviewerId))
