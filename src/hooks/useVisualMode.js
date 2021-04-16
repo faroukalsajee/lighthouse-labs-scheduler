@@ -1,11 +1,11 @@
 import { useState } from 'react';
-// take in an initial mode
-// set mode state with initial mode provided
-// return an object with mode property
 
+// Hook handles transitions between Appoiment component modes
 const useVisualMode = (initial) => {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
+
+// Transitions modes OR replaces mode if 'replace = true'
   const transition = (newMode, replace = false) => {
     if (replace) {
       setMode((prev) => newMode)
