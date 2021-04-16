@@ -5,6 +5,8 @@
 
 ## Project Display
 
+https://user-images.githubusercontent.com/42353964/114985674-ed895880-9e47-11eb-8a54-72dfbfdad2f0.mov
+
 ## Functional Requirements
 * Development focuses on a single page application (SPA) called Interview Scheduler, built using React.
 * Data is persisted by the API server using a PostgreSQL database.
@@ -40,12 +42,12 @@ The Scheduler client application created using Create React App. Express is the 
 Both servers run concurrently; requests are proxied from the Webpack development server to the API server.
 
 
-
 ## Setup
 
 Install dependencies with `npm install`.
 
 ## Running Webpack Development Server
+
 
 ```sh
 npm start
@@ -62,3 +64,15 @@ npm test
 ```sh
 npm run storybook
 ```
+
+## Project Stack
+Front-End: React, Axios, JSX, HTML, SASS, JavaScript
+
+Back-End: Express, Node.js, WebSocket
+
+Testing: Webpack Dev Server, Jest, Testing Library and Cypress
+
+Database: PostgreSQL
+
+UI Component Design: Storybook
+
