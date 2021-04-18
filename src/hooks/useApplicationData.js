@@ -18,6 +18,20 @@ export default function useApplicationData(props) {
   const setDay = day => dispatch({ type: SET_DAY, day: day });
 
   useEffect(() => {
+
+// Create WebSocket connection.
+const socket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
+
+// Connection opened
+socket.addEventListener('open', function (event) {
+    socket.send('Hello Server!');
+});
+
+// Listen for messages
+socket.addEventListener('message', function (event) {
+    console.log('Message from server ', event.data);
+});
+
     Promise.all([
       axios.get("/api/days"),
       axios.get("/api/appointments"),
