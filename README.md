@@ -5,7 +5,6 @@
 
 ## Project Display
 
-https://user-images.githubusercontent.com/42353964/114985674-ed895880-9e47-11eb-8a54-72dfbfdad2f0.mov
 
 ## Functional Requirements
 * Development focuses on a single page application (SPA) called Interview Scheduler, built using React.

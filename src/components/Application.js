@@ -57,6 +57,7 @@ export default function Application(props) {
   	return appointments;
   };
 
+
   const appointmentObjects = getAppointmentsForDay(state, state.day);
   const interviewers = getInterviewersForDay(state, state.day);
 
