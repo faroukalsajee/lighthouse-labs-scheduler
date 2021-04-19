@@ -1,14 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
-import "components/Application.scss";
-import DayList from "./DayList";
-import Appointment from "components/Appointment";
-import {
-  getAppointmentsForDay,
-  getInterview,
-  getInterviewersForDay,
-} from "helpers/selectors";
-import useApplicationData from "hooks/useApplicationData";
+import 'components/Application.scss';
+
+import DayList from 'components/DayList';
+import Appointment from './Appointment';
+
+import useApplicationData from 'hooks/useApplicationData.js';
+
+import { getAppointmentsForDay } from 'helpers/selectors';
+import { getInterviewersForDay } from 'helpers/selectors';
+import { getInterview } from 'helpers/selectors';
 
 // Web Socket Configuration - localhost:8001 is API port
 const socket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
@@ -58,57 +59,52 @@ export default function Application(props) {
   };
 
 
-  const appointmentObjects = getAppointmentsForDay(state, state.day);
-  const interviewers = getInterviewersForDay(state, state.day);
+  // Call selector functions to get data for given day
+	const interviewers = getInterviewersForDay(state, state.day);
 
-  const appointment = appointmentObjects.map((appointmentObject) => {
-    const interview = getInterview(state, appointmentObject.interview);
+	const appointment = getAppointmentsForDay(state, state.day).map(
+		(appointment) => {
+			return (
+				<Appointment
+					key={appointment.id}
+					{...appointment}
+					interview={getInterview(state, appointment.interview)}
+					interviewers={interviewers}
+					bookInterview={bookInterview}
+					cancelInterview={cancelInterview}
+				/>
+			);
+		}
+	);
 
-    return (
-      <Appointment
-        {...appointmentObject}
-        key={appointmentObject.id}
-        interview={interview}
-        interviewers={interviewers}
-        bookInterview={bookInterview}
-        cancelInterview={cancelInterview}
+ // Return Application component body
+ return (
+  <main className='layout'>
+    <section className='sidebar'>
+      <img
+        className='sidebar--centered'
+        src='images/logo.png'
+        alt='Interview Scheduler'
       />
-    );
-  });
-
-  return (
-    <main className="layout">
-      <section className="sidebar">
-        <img
-          className="sidebar--centered"
-          src="images/logo.png"
-          alt="Interview Scheduler"
+      <hr className='sidebar__separator sidebar--centered' />
+      <nav className='sidebar__menu'>
+        <DayList
+          day={state.day}
+          spots={state.spots}
+          days={state.days}
+          setDay={setDay}
         />
-        <hr className="sidebar__separator sidebar--centered" />
-        <nav className="sidebar__menu">
-          <DayList
-            days={state.days}
-            day={state.day}
-            setDay={setDay}
-            bookInterview={bookInterview}
-            cancelInterview={cancelInterview}
-          />
-        </nav>
-        <img
-          className="sidebar__lhl sidebar--centered"
-          src="images/lhl.png"
-          alt="Lighthouse Labs"
-        />
-      </section>
-      <section className="schedule">
-        {appointment}
-        <Appointment
-          key="last"
-          time="5pm"
-          bookInterview={bookInterview}
-          cancelInterview={cancelInterview}
-        />
-      </section>
-    </main>
-  );
+      </nav>
+      <img
+        className='sidebar__lhl sidebar--centered'
+        src='images/lhl.png'
+        alt='Lighthouse Labs'
+      />
+    </section>
+    <section className='schedule'>
+      {appointment}
+      <Appointment key='last' time='5pm' />
+    </section>
+  </main>
+);
 }
