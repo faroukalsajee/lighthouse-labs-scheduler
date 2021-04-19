@@ -5,6 +5,10 @@
 
 ## Project Display
 
+## Component Tree of the App
+![alt text](https://github.com/faroukalsajee/scheduler/blob/master/docs/1ff1a43f-2f0e-4fc7-94d8-48f7598bfe83.png)
+## Component Flow of the App
+![alt text](https://github.com/faroukalsajee/scheduler/blob/master/docs/c665622e-5093-4552-8519-51b4f274cf21.png)
 
 ## Functional Requirements
 * Development focuses on a single page application (SPA) called Interview Scheduler, built using React.
