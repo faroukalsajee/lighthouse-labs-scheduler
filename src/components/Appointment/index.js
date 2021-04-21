@@ -51,7 +51,7 @@ export default function Appointment(props) {
         transition(ERROR_SAVE, true);
       });
   }
-
+  // removes an appointment
   function remove() {
     if (mode === CONFIRM) {
       transition(DELETING, true);

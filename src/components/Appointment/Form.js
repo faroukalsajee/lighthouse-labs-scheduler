@@ -6,6 +6,7 @@ import InterviewerList from "../InterviewerList";
 
 export default function Form(props) {
 
+  // keeping track of the name
     const [name, setName] = useState(props.name || "");
     const [interviewer, setInterviewer] = useState(props.interviewer || null);
     const [error, setError] = useState("");
@@ -19,6 +20,7 @@ export default function Form(props) {
         props.onSave(name, interviewer);
     }
 
+  // function to clear all fields
     function reset(){
         setName("");
         setInterviewer(null);
