@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 // Check appointment objects then return an array of nested objects with same id
 const matchIds = (appointments, ids) => {
     const matched = ids.map(id => appointments[id]);
