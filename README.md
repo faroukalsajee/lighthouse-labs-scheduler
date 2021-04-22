@@ -1,8 +1,20 @@
 # Interview Scheduler
 ## Project Description
-### Interview Scheduler is a SPA (Single Page Application) for tracking students interviews built with the latest tools and techniques for optimized user experience. The App utilizes React built-in and custom hooks and allows users to add, edit and delete appointments in real time. Data is persisted by the API server using a PostgreSQL database. The client application communicates with an API server over HTTP, using the JSON format. For quality assurance, the project follows best practices of TDD (Test Driven Development), where individual Components are tested in isolation as well as End-to-End testing is performed.
+#### Interview Scheduler is a SPA (Single Page Application) for tracking students interviews built with the latest tools and techniques for optimized user experience. The App utilizes React built-in and custom hooks and allows users to add, edit and delete appointments in real time. Data is persisted by the API server using a PostgreSQL database. The client application communicates with an API server over HTTP, using the JSON format. For quality assurance, the project follows best practices of TDD (Test Driven Development), where individual Components are tested in isolation as well as End-to-End testing is performed.
 
+## Project Deployment
+This app is deployed online using [Heroku](https://www.heroku.com/), [CircleCI](https://circleci.com/) and [Netlify](https://www.netlify.com/).
+[Check it out!](https://seemesoon.netlify.app/)
+
+Note: The application may take a few seconds to work on netlify as Heroku host server takes time to warm up.
+
+---
 ## Project Display
+![IMAGE ALT TEXT HERE](https://github.com/faroukalsajee/scheduler/blob/master/docs/chrome-capture%20(1).gif)
+![IMAGE ALT TEXT HERE](https://github.com/faroukalsajee/scheduler/blob/master/docs/chrome-capture%20(2).gif)
+![IMAGE ALT TEXT HERE](https://github.com/faroukalsajee/scheduler/blob/master/docs/chrome-capture.gif)
+
+---
 
 ## Component Tree of the App
 ![alt text](https://github.com/faroukalsajee/scheduler/blob/master/docs/1ff1a43f-2f0e-4fc7-94d8-48f7598bfe83.png)
@@ -43,13 +55,11 @@ The Scheduler client application created using Create React App. Express is the 
 
 Both servers run concurrently; requests are proxied from the Webpack development server to the API server.
 
-
 ## Setup
 
 Install dependencies with `npm install`.
 
 ## Running Webpack Development Server
-
 
 ```sh
 npm start
@@ -78,3 +88,6 @@ Database: PostgreSQL
 
 UI Component Design: Storybook
 
+---
+
+#### Feel free to get in touch at faroukalsajee@gmail.com
