@@ -8,7 +8,6 @@ const matchIds = (appointments, ids) => {
   // Go through state array with days and appointments object then
   // Match appointments given in the days object to those in the appointments object
   function getAppointmentsForDay(state, day) {
-
     let appointmentArr = [];
     state.days.map(dayObject => {
       if (dayObject.name === day) {
