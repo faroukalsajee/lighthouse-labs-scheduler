@@ -15,19 +15,19 @@ Note: The application may take a few seconds to work on netlify as Heroku host s
 
 ## Project Display
 
-![IMAGE ALT TEXT HERE](https://github.com/faroukalsajee/scheduler/blob/master/docs/chrome-capture%20(1).gif)
-![IMAGE ALT TEXT HERE](https://github.com/faroukalsajee/scheduler/blob/master/docs/chrome-capture%20(2).gif)
-![IMAGE ALT TEXT HERE](https://github.com/faroukalsajee/scheduler/blob/master/docs/chrome-capture.gif)
+![IMAGE ALT TEXT HERE](https://github.com/faroukalsajee/scheduler/blob/master/docs/add-new-interview.gif)
+![IMAGE ALT TEXT HERE](https://github.com/faroukalsajee/scheduler/blob/master/docs/name-is-required.gif)
+![IMAGE ALT TEXT HERE](https://github.com/faroukalsajee/scheduler/blob/master/docs/delete-interview.gif)
 
 ---
 
 ## Component Tree of the App
 
-![alt text](https://github.com/faroukalsajee/scheduler/blob/master/docs/1ff1a43f-2f0e-4fc7-94d8-48f7598bfe83.png)
+![alt text](https://github.com/faroukalsajee/scheduler/blob/master/docs/component-tree.png)
 
 ## Component Flow of the App
 
-![alt text](https://github.com/faroukalsajee/scheduler/blob/master/docs/c665622e-5093-4552-8519-51b4f274cf21.png)
+![alt text](https://github.com/faroukalsajee/scheduler/blob/master/docs/app-flow.png)
 
 ## Functional Requirements
 
