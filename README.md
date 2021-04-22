@@ -1,15 +1,20 @@
 # Interview Scheduler
+
 ## Project Description
-#### Interview Scheduler is a SPA (Single Page Application) for tracking students interviews built with the latest tools and techniques for optimized user experience. The App utilizes React built-in and custom hooks and allows users to add, edit and delete appointments in real time. Data is persisted by the API server using a PostgreSQL database. The client application communicates with an API server over HTTP, using the JSON format. For quality assurance, the project follows best practices of TDD (Test Driven Development), where individual Components are tested in isolation as well as End-to-End testing is performed.
+
+### Interview Scheduler is a SPA (Single Page Application) for tracking students interviews built with the latest tools and techniques for optimized user experience. The App utilizes React built-in and custom hooks and allows users to add, edit and delete appointments in real time. Data is persisted by the API server using a PostgreSQL database. The client application communicates with an API server over HTTP, using the JSON format. For quality assurance, the project follows best practices of TDD (Test Driven Development), where individual Components are tested in isolation as well as End-to-End testing is performed
 
 ## Project Deployment
+
 This app is deployed online using [Heroku](https://www.heroku.com/), [CircleCI](https://circleci.com/) and [Netlify](https://www.netlify.com/).
 [Check it out!](https://seemesoon.netlify.app/)
 
 Note: The application may take a few seconds to work on netlify as Heroku host server takes time to warm up.
 
 ---
+
 ## Project Display
+
 ![IMAGE ALT TEXT HERE](https://github.com/faroukalsajee/scheduler/blob/master/docs/chrome-capture%20(1).gif)
 ![IMAGE ALT TEXT HERE](https://github.com/faroukalsajee/scheduler/blob/master/docs/chrome-capture%20(2).gif)
 ![IMAGE ALT TEXT HERE](https://github.com/faroukalsajee/scheduler/blob/master/docs/chrome-capture.gif)
@@ -17,17 +22,22 @@ Note: The application may take a few seconds to work on netlify as Heroku host s
 ---
 
 ## Component Tree of the App
+
 ![alt text](https://github.com/faroukalsajee/scheduler/blob/master/docs/1ff1a43f-2f0e-4fc7-94d8-48f7598bfe83.png)
+
 ## Component Flow of the App
+
 ![alt text](https://github.com/faroukalsajee/scheduler/blob/master/docs/c665622e-5093-4552-8519-51b4f274cf21.png)
 
 ## Functional Requirements
+
 * Development focuses on a single page application (SPA) called Interview Scheduler, built using React.
 * Data is persisted by the API server using a PostgreSQL database.
 * The client application communicates with an API server over HTTP, using the JSON format.
 * Jest tests are used through the development of the project.
 
 ## Behavioural Requirements
+
 * Interviews can be booked between Monday and Friday.
 * A user can switch between weekdays.
 * A user can book an interview in an empty appointment slot.
@@ -43,6 +53,7 @@ Note: The application may take a few seconds to work on netlify as Heroku host s
 * The application makes API requests to load and persist data. We do not lose data after a browser refresh.
 
 ## Technical Specifications
+
 * React
 * Webpack, Babel
 * Axios, WebSockets
@@ -78,6 +89,7 @@ npm run storybook
 ```
 
 ## Project Stack
+
 Front-End: React, Axios, JSX, HTML, SASS, JavaScript
 
 Back-End: Express, Node.js, WebSocket
@@ -90,4 +102,4 @@ UI Component Design: Storybook
 
 ---
 
-#### Feel free to get in touch at faroukalsajee@gmail.com
+### Feel free to get in touch at faroukalsajee@gmail.com
