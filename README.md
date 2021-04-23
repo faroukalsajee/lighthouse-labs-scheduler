@@ -1,4 +1,5 @@
 # [Interview Scheduler](https://seemesoon.netlify.app/)
+
 ## Project Description
 
 [**Interview Scheduler**](https://seemesoon.netlify.app/) is an SPA (Single Page Application) for tracking students interviews and allows users to add, edit and delete appointments in real time. Data is persisted by the API server using a PostgreSQL database. The client application communicates with an API server over HTTP, using the JSON format. For quality assurance, the project follows best practices of TDD (Test Driven Development), where individual Components are tested in isolation as well as End-to-End testing is performed.
