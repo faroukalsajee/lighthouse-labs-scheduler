@@ -1,5 +1,4 @@
-[![IMAGE ALT TEXT HERE](https://github.com/faroukalsajee/scheduler/blob/master/docs/logo.png)
-](https://seemesoon.netlify.app/)
+# Interview Scheduler
 
 ## Project Description
 
