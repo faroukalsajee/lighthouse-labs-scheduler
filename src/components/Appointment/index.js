@@ -100,16 +100,17 @@ export default function Appointment(props) {
           onConfirm={remove}
           message="Are you sure you would like to delete?" 
         />}
-      {mode === EDIT &&
-        <Form 
-          name={props.name ? props.name : props.interview.student}
-          value={props.value ? props.value: props.interview.interviewer.id}
-          interviewers={props.interviewers}
-          onSave={save}
-          onCancel={back}
-          
-        />
-      }
+        { mode === EDIT &&
+                <Form
+                    interviewer={(props.interview) ? props.interview.interviewer.id : null}
+                    interviewers={props.interviewers}
+                    name={props.interview && props.interview.student}
+                    onSave={(name, interviewer) => {
+                        save(name, interviewer);
+                    }}
+                    onCancel={() => { transition(SHOW) }}
+                />
+            }
       {mode === ERROR_SAVE && 
         <Error 
           message="Could not create appointment"
