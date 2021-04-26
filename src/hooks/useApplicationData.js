@@ -29,11 +29,12 @@ export default function useApplicationData(props) {
 
     // Listen for messages and dispatching a state that updates instantly
     socket.addEventListener("message", function (event) {
-      const message = JSON.parse(event.data)
+      const message = JSON.parse(event.data);
       dispatch({
         type: SET_INTERVIEW,
-        id:message.id,
-       interview: message.interview})
+        id: message.id,
+        interview: message.interview,
+      });
       console.log("Message from server ", event.data);
     });
 
@@ -50,8 +51,6 @@ export default function useApplicationData(props) {
       });
     });
   }, []);
-
-
 
   function bookInterview(id, interview) {
     return axios.put(`/api/appointments/${id}`, { interview }).then((r) =>

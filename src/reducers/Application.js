@@ -5,7 +5,7 @@ export const SET_INTERVIEW_DAYS = "SET_INTERVIEW_DAYS";
 
 function getSpotsForDay(state, day) {
   return state.days
-    .find(d => d.name === day)
+    .find((d) => d.name === day)
     .appointments.reduce((a, c) => {
       return state.appointments[c].interview ? a : a + 1;
     }, 0);
@@ -16,20 +16,20 @@ export default function reducer(state, action) {
     case SET_DAY:
       return {
         ...state,
-        day: action.day
+        day: action.day,
       };
     case SET_APPLICATION_DATA:
       return {
         ...state,
         days: action.days,
         appointments: action.appointments,
-        interviewers: action.interviewers
+        interviewers: action.interviewers,
       };
     case SET_INTERVIEW_DAYS: {
       return {
         ...state,
         days: action.days,
-        appointments: action.appointments
+        appointments: action.appointments,
       };
     }
     case SET_INTERVIEW: {
@@ -39,16 +39,16 @@ export default function reducer(state, action) {
           ...state.appointments,
           [action.id]: {
             ...state.appointments[action.id],
-            interview: action.interview
-          }
-        }
+            interview: action.interview,
+          },
+        },
       };
       return {
         ...newState,
-        days: state.days.map(day => ({
+        days: state.days.map((day) => ({
           ...day,
-          spots: getSpotsForDay(newState, day.name)
-        }))
+          spots: getSpotsForDay(newState, day.name),
+        })),
       };
     }
     default:
